@@ -97,8 +97,8 @@ docker $(docker-machine config aws-swarm-master) network create --driver overlay
 # Add interlock routing
 export SWARM_HOST=tcp://$(docker-machine ip aws-swarm-master):3376
 eval $(docker-machine env aws-swarm-master)
-docker-compose -f aws-interlock-compose.yml up -d nginx
-docker-compose -f aws-interlock-compose.yml up -d interlock
+docker-compose -f interlock-compose.yml up -d nginx
+docker-compose -f interlock-compose.yml up -d interlock
 
 echo "########################"
 echo "Your swarm is up and running!"
