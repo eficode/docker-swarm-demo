@@ -27,7 +27,7 @@ docker-machine create \
     --swarm-discovery="consul://$(docker-machine ip local-swarm-keystore):8500" \
     --engine-opt "cluster-store=consul://$(docker-machine ip local-swarm-keystore):8500" \
     --engine-opt "cluster-advertise=eth0:2376" \
-    --engine-insecure-registry $REGISTRY \
+    $REGISTRY \
     --driver virtualbox \
     local-swarm-master
 
@@ -37,7 +37,7 @@ for i in `seq 1 2`; do
         --swarm-discovery="consul://$(docker-machine ip local-swarm-keystore):8500" \
         --engine-opt="cluster-store=consul://$(docker-machine ip local-swarm-keystore):8500" \
         --engine-opt="cluster-advertise=eth0:2376" \
-        --engine-insecure-registry $REGISTRY \
+        $REGISTRY \
         --driver virtualbox \
         "local-swarm-node"$i
 done
