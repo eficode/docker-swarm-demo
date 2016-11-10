@@ -63,7 +63,7 @@ docker-machine create \
     --swarm-discovery="consul://$(docker-machine ip aws-swarm-keystore):8500" \
     --engine-opt "cluster-store=consul://$(docker-machine ip aws-swarm-keystore):8500" \
     --engine-opt "cluster-advertise=eth0:2376" \
-    --engine-insecure-registry $REGISTRY \
+    $REGISTRY \
     --driver amazonec2 \
     --amazonec2-ami $AMI \
     --amazonec2-instance-type $MASTER_TYPE \
@@ -80,7 +80,7 @@ for i in `seq 1 2`; do
         --swarm-discovery="consul://$(docker-machine ip aws-swarm-keystore):8500" \
         --engine-opt="cluster-store=consul://$(docker-machine ip aws-swarm-keystore):8500" \
         --engine-opt="cluster-advertise=eth0:2376" \
-        --engine-insecure-registry $REGISTRY \
+        $REGISTRY \
         --driver amazonec2 \
         --amazonec2-ami $AMI \
         --amazonec2-instance-type $NODE_TYPE \
